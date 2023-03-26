@@ -43,3 +43,7 @@ resource "aws_instance" "app" {
   instance_type = "t4g.nano"
   key_name = "app-key"
 }
+
+output "ips" {
+    value = aws_instance.app.*.public_ip
+}
