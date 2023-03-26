@@ -33,7 +33,7 @@ output "ami-descr" {
 }
 
 resource "aws_key_pair" "app-key" {
-    name = "app-key"
+    key_name = "app-key"
     public_key = file("./id_ed25519.pub")
 }
 
