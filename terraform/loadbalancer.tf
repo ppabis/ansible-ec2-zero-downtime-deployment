@@ -1,10 +1,3 @@
-data "aws_subnets" "subnets" {
-    filter {
-      name = "vpc-id"
-        values = [data.aws_vpc.default.id]
-    }
-}
-
 resource "aws_lb" "loadbalancer" {
     name               = "loadbalancer"
     internal           = false

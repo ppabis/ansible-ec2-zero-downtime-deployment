@@ -14,8 +14,3 @@ resource "aws_alb_target_group" "apps" {
   }
   
 }
-
-
-data "aws_vpc" "default" {
-  default = true
-}
