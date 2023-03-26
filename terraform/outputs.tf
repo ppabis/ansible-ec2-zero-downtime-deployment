@@ -6,6 +6,6 @@ output "ami-descr" {
   value = data.aws_ami.amzn2.description
 }
 
-output "ips" {
+/* output "ips" {
   value = aws_instance.app.*.public_ip
-}
+} */
