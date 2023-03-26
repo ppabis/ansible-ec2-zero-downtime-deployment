@@ -32,6 +32,11 @@ output "ami-descr" {
   value = data.aws_ami.amzn2.description
 }
 
+resource "aws_key_pair" "app-key" {
+    name = "app-key"
+    public_key = file("./id_ed25519.pub")
+}
+
 resource "aws_instance" "app" {
   count = 2
   ami = data.aws_ami.amzn2.id   # Amazon Linux 2 for ARM
