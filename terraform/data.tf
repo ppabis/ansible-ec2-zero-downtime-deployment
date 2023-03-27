@@ -34,3 +34,8 @@ data "aws_ami" "amzn2" {
     values = ["amzn2-ami-hvm-*"]
   }
 }
+
+data "aws_acm_certificate" "dns-cert" {
+  domain   = var.dns_domain
+  statuses = ["ISSUED"]
+}
