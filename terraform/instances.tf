@@ -1,6 +1,6 @@
 resource "aws_key_pair" "app-key" {
   key_name   = "app-key"
-  public_key = file("./id_ed25519.pub")
+  public_key = file(var.key_pair_file_name)
 }
 
 resource "aws_instance" "app" {
@@ -23,7 +23,7 @@ resource "aws_security_group" "ssh" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["158.181.0.0/16"]
+    cidr_blocks      = [var.ipv4_ssh_allow]
     ipv6_cidr_blocks = []
     security_groups  = []
   }
