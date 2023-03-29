@@ -19,13 +19,13 @@ resource "aws_iam_role" "app-role" {
 }
 
 resource "aws_iam_role_policy_attachment" "app-role-policy-target-group" {
-  role = aws_iam_role.app-role.name
+  role       = aws_iam_role.app-role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
 }
 
 resource "aws_iam_policy" "app-target-group-policy" {
-    name = "app-target-group-policy"
-    policy = <<-EOF
+  name   = "app-target-group-policy"
+  policy = <<-EOF
     {
         "Version": "2012-10-17",
         "Statement": [
@@ -46,6 +46,6 @@ resource "aws_iam_policy" "app-target-group-policy" {
 }
 
 resource "aws_iam_instance_profile" "app-role-profile" {
-    name = "app-role-profile"
-    role = aws_iam_role.app-role.name
+  name = "app-role-profile"
+  role = aws_iam_role.app-role.name
 }
