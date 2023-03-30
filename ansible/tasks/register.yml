@@ -1,0 +1,19 @@
+---
+- name: Register instance in ELB
+  shell:
+    cmd: >-
+      aws elbv2 register-targets --region=eu-central-1
+      --target-group-arn "{{ target_group_arn }}"
+      --targets "Id={{ instance_id.content }}"
+
+- name: Wait for target to become healthy
+  shell:
+    cmd: >-
+      aws elbv2 describe-target-health --region=eu-central-1
+      --target-group-arn "{{ target_group_arn }}"
+      --targets "Id={{ instance_id.content }}"
+  register: health
+  until: "( health.stdout | from_json ).TargetHealthDescriptions[0].TargetHealth.State == 'healthy'"
+  changed_when: false
+  retries: 10
+  delay: 10

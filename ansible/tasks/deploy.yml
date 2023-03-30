@@ -1,0 +1,4 @@
+---
+- name: Deploy task
+  debug:
+    msg: "Placeholder"

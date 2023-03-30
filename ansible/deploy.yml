@@ -1,0 +1,15 @@
+---
+- hosts: apps
+  become: yes
+  serial: 1
+
+  vars:
+    deploy_dir: /opt/app
+
+  handlers:
+    - import_tasks: tasks/reload-service.yml
+
+  tasks:
+    - import_tasks: tasks/deregister.yml
+    - import_tasks: tasks/deploy.yml
+    - import_tasks: tasks/register.yml
