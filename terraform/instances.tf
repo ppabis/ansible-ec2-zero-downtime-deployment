@@ -47,6 +47,6 @@ resource "aws_security_group" "http" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["10.0.0.0/8", "172.28.0.0/16"]
+    cidr_blocks = var.http_private_cidr_blocks
   }
 }
