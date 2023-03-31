@@ -33,12 +33,19 @@ resource "aws_iam_policy" "app-target-group-policy" {
                 "Sid": "VisualEditor0",
                 "Effect": "Allow",
                 "Action": [
-                    "elasticloadbalancing:DescribeTargetGroups",
-                    "elasticloadbalancing:DescribeTargetHealth",
                     "elasticloadbalancing:RegisterTargets",
                     "elasticloadbalancing:DeregisterTargets"
                 ],
                 "Resource": "${aws_alb_target_group.apps.arn}"
+            },
+            {
+                "Sid": "VisualEditor1",
+                "Effect": "Allow",
+                "Action": [
+                    "elasticloadbalancing:DescribeTargetGroups",
+                    "elasticloadbalancing:DescribeTargetHealth"
+                ],
+                "Resource": "*"
             }
         ]
     }
