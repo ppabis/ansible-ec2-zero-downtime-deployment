@@ -22,15 +22,11 @@ def lotsofcrypto(iters):
     current = f"helloworld {now}"
     for i in range(iters):
         current = sha256(current.encode()).hexdigest()
-    return current, timer() - start
+    return current[:24], timer() - start
 
 def generate_response(iters=250000):
     myhash, timed = lotsofcrypto(iters)
-    return f"""
-    Version: {VERSION}
-    This is {gethostname()}.
-    My hash is {myhash} and took me {timed}s for {iters} iterations.
-    """.encode()
+    return f"v: {VERSION}, this is {gethostname()}. My hash is {myhash} in {timed}s, {iters}i".encode()
 
 class MyHandler(BaseHTTPRequestHandler):
 
