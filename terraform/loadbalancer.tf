@@ -1,4 +1,4 @@
-/* resource "aws_lb" "loadbalancer" {
+resource "aws_lb" "loadbalancer" {
   name               = "loadbalancer"
   internal           = false
   load_balancer_type = "application"
@@ -8,7 +8,7 @@
   tags = {
     Name = "loadbalancer"
   }
-} */
+}
 
 resource "aws_security_group" "loadbalancer" {
   name = "Loadbalancer-SG"

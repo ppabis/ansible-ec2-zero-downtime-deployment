@@ -1,4 +1,4 @@
-/* resource "aws_lb_listener" "http" {
+resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.loadbalancer.arn
   port              = "80"
   protocol          = "HTTP"
@@ -41,4 +41,4 @@ resource "aws_lb_listener_rule" "apps" {
       values = ["/apps/*", "/apps"]
     }
   }
-} */
+}
