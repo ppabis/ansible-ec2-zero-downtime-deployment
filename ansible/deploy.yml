@@ -6,10 +6,11 @@
   vars:
     deploy_dir: /opt/app
 
-  handlers:
-    - import_tasks: tasks/reload-service.yml
+  vars_files:
+    - vars/target_group.yml
 
   tasks:
     - import_tasks: tasks/deregister.yml
     - import_tasks: tasks/deploy.yml
+    - import_tasks: tasks/reload-service.yml
     - import_tasks: tasks/register.yml

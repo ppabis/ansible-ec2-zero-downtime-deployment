@@ -1,4 +1,36 @@
 ---
-- name: Deploy task
-  debug:
-    msg: "Placeholder"
+- name: Ensure user www-data exists
+  user:
+    name: www-data
+    state: present
+    shell: /bin/false
+    home: /var/www
+    system: yes
+    createhome: no
+
+- name: Ensure python3 is installed
+  yum:
+    name:
+      - python3
+      - python3-pip
+    state: present
+
+- name: Install service.py
+  copy:
+    src: service.py
+    dest: /opt/service.py
+    owner: www-data
+    group: root
+    mode: 0755
+  register: service_py
+
+- name: Install service
+  copy:
+    src: files/web.service
+    dest: /etc/systemd/system/web.service
+    owner: root
+    group: root
+    mode: 0644
+  register: service_file
+
+
