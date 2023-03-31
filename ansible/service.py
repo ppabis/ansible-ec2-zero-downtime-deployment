@@ -22,7 +22,7 @@ def lotsofcrypto(iters):
     current = f"helloworld {now}"
     for i in range(iters):
         current = sha256(current.encode()).hexdigest()
-    return current[:24], timer() - start
+    return current[:16], timer() - start
 
 def generate_response(iters=250000):
     myhash, timed = lotsofcrypto(iters)
