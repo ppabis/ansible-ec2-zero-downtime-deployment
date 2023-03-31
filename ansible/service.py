@@ -35,6 +35,9 @@ def generate_response(iters=250000):
 class MyHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
+        # Log the request
+        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
+        print(f"[{now}] - {self.client_address[0]} - {self.path}")
         self.send_response(200)
         self.send_header('Content-type','text/plain')
         self.end_headers()
@@ -42,7 +45,6 @@ class MyHandler(BaseHTTPRequestHandler):
             self.wfile.write(generate_response(2)) # Make healthcheck faster
         else:
             self.wfile.write(generate_response())
-        return
 
 def run():
     get_version()

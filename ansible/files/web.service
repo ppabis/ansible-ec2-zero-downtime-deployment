@@ -6,7 +6,7 @@ Type = simple
 ExecStart = /usr/bin/python3 /opt/service.py
 Restart = always
 WorkingDirectory = /opt
-User = www-data
+User = root
 
 
 [Install]
