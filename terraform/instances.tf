@@ -8,6 +8,7 @@ resource "aws_instance" "app" {
   ami           = data.aws_ami.amzn2.id # Amazon Linux 2 for ARM
   instance_type = "t4g.nano"
   key_name      = "app-key"
+  iam_instance_profile = aws_iam_instance_profile.app-role-profile.name
   vpc_security_group_ids = [
     aws_security_group.http.id,
     aws_security_group.ssh.id
