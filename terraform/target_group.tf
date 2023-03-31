@@ -7,7 +7,7 @@ resource "aws_alb_target_group" "apps" {
   deregistration_delay = 30
 
   health_check {
-    path     = "/"
+    path     = "/healthcheck"
     port     = "80"
     protocol = "HTTP"
     interval = 30
