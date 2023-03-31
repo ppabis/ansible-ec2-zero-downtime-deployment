@@ -1,6 +1,6 @@
 resource "aws_alb_target_group" "apps" {
   name        = "apps"
-  port        = 80
+  port        = 8080
   protocol    = "HTTP"
   vpc_id      = data.aws_vpc.default.id
   target_type = "instance"
@@ -8,10 +8,11 @@ resource "aws_alb_target_group" "apps" {
 
   health_check {
     path     = "/healthcheck"
-    port     = "80"
+    port     = 8080
     protocol = "HTTP"
     interval = 30
     timeout  = 20
+
   }
 
 }
