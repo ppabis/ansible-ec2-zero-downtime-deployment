@@ -50,7 +50,7 @@ def run():
     get_version()
     print(f"VERSION: {VERSION}")
     print('starting server...')
-    server_address = ('0.0.0.0', 80)
+    server_address = ('0.0.0.0', 8080)
     httpd = HTTPServer(server_address, MyHandler)
     print('running server...')
     httpd.serve_forever()
