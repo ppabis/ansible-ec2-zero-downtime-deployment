@@ -15,5 +15,5 @@
   register: health
   until: "( health.stdout | from_json ).TargetHealthDescriptions[0].TargetHealth.State == 'healthy'"
   changed_when: false
-  retries: 10
-  delay: 10
+  retries: 15
+  delay: 20
