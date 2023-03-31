@@ -26,7 +26,7 @@ def lotsofcrypto(iters):
 
 def generate_response(iters=250000):
     myhash, timed = lotsofcrypto(iters)
-    return f"v: {VERSION}, this is {gethostname()}. My hash is {myhash} in {timed}s, {iters}i".encode()
+    return f"v: {VERSION}, this is {gethostname()}. My hash is {myhash} in {timed:.3f}s, {iters}i".encode()
 
 class MyHandler(BaseHTTPRequestHandler):
 
