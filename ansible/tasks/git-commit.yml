@@ -1,0 +1,14 @@
+---
+- name: Get Git commit short SHA
+  set_fact:
+    git_commit_short_sha: "{{ lookup('pipe', 'git rev-parse --short HEAD') }}"
+  when: git_commit_short_sha is not defined
+
+- name: Put git commit into /opt/version
+  copy:
+    content: "{{ git_commit_short_sha }}"
+    dest: /opt/version
+    mode: 0644
+    owner: www-data
+    group: root
+  when: git_commit_short_sha is defined
