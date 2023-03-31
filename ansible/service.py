@@ -24,7 +24,7 @@ def lotsofcrypto(iters):
         current = sha256(current.encode()).hexdigest()
     return current[:16], timer() - start
 
-def generate_response(iters=250000):
+def generate_response(iters=250020):
     myhash, timed = lotsofcrypto(iters)
     return f"v: {VERSION}, this is {gethostname().split('.')[0]}. My hash is {myhash} in {timed:.3f}s, {iters}i".encode()
 
