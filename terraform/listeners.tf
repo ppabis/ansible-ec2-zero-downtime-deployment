@@ -28,17 +28,17 @@ resource "aws_lb_listener" "https" {
   }
 }
 
-# resource "aws_lb_listener_rule" "apps" {
-#   listener_arn = aws_lb_listener.https.arn
+resource "aws_lb_listener_rule" "apps" {
+  listener_arn = aws_lb_listener.https.arn
 
-#   action {
-#     type             = "forward"
-#     target_group_arn = aws_alb_target_group.apps.arn
-#   }
+  action {
+    type             = "forward"
+    target_group_arn = aws_alb_target_group.apps.arn
+  }
 
-#   condition {
-#     path_pattern {
-#       values = ["/apps/*", "/apps"]
-#     }
-#   }
-# }
+  condition {
+    path_pattern {
+      values = ["/apps/*", "/apps"]
+    }
+  }
+}
