@@ -20,7 +20,7 @@ resource "aws_iam_role" "app-role" {
 
 resource "aws_iam_role_policy_attachment" "app-role-policy-target-group" {
   role       = aws_iam_role.app-role.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
+  policy_arn = aws_iam_policy.app-target-group-policy.arn
 }
 
 resource "aws_iam_policy" "app-target-group-policy" {
