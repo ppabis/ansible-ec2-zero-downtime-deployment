@@ -4,6 +4,7 @@ from hashlib import sha256
 from datetime import datetime
 from timeit import default_timer as timer
 from os.path import exists
+from time import sleep
 
 VERSION = "?Unknown?"
 
@@ -24,7 +25,7 @@ def lotsofcrypto(iters):
         current = sha256(current.encode()).hexdigest()
     return current[:16], timer() - start
 
-def generate_response(iters=250020):
+def generate_response(iters=250040):
     myhash, timed = lotsofcrypto(iters)
     return f"v: {VERSION}, this is {gethostname().split('.')[0]}. My hash is {myhash} in {timed:.3f}s, {iters}i".encode()
 
@@ -45,6 +46,7 @@ class MyHandler(BaseHTTPRequestHandler):
 def run():
     get_version()
     print(f"VERSION: {VERSION}")
+    sleep(45)   # Simulate a long startup time
     print('starting server...')
     server_address = ('0.0.0.0', 8080)
     httpd = HTTPServer(server_address, MyHandler)
