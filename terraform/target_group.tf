@@ -4,7 +4,7 @@ resource "aws_alb_target_group" "apps" {
   protocol    = "HTTP"
   vpc_id      = data.aws_vpc.default.id
   target_type = "instance"
-  deregistration_delay = 30
+  deregistration_delay = 15
 
   health_check {
     path     = "/healthcheck"
