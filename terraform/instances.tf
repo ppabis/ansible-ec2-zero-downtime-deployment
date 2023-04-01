@@ -3,7 +3,7 @@ resource "aws_key_pair" "app-key" {
   public_key = file(var.key_pair_file_name)
 }
 
-resource "aws_instance" "app" {
+/* resource "aws_instance" "app" {
   count         = 2
   ami           = data.aws_ami.amzn2.id # Amazon Linux 2 for ARM
   instance_type = "t4g.nano"
@@ -13,7 +13,7 @@ resource "aws_instance" "app" {
     aws_security_group.http.id,
     aws_security_group.ssh.id
   ]
-}
+} */
 
 resource "aws_security_group" "ssh" {
   name        = "ssh"
