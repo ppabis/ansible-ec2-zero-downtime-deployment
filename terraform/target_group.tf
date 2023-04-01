@@ -14,6 +14,7 @@ resource "aws_alb_target_group" "apps" {
     timeout  = 20
     healthy_threshold = 2
     unhealthy_threshold = 2
+    matcher = "200-210"
   }
 
 }
