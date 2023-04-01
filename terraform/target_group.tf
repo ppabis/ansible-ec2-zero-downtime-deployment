@@ -10,9 +10,10 @@ resource "aws_alb_target_group" "apps" {
     path     = "/healthcheck"
     port     = 8080
     protocol = "HTTP"
-    interval = 30
+    interval = 10
     timeout  = 20
-
+    healthy_threshold = 2
+    unhealthy_threshold = 2
   }
 
 }
